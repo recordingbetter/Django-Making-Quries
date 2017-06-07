@@ -19,14 +19,14 @@ class Author(models.Model):
 
 class Entry(models.Model):
     blog = models.ForeignKey(Blog)
-    headline = models.CharField(max_length = 255)
-    body_text = models.TextField()
-    pub_date = models.DateField()
-    mod_date = models.DateField()
+    headline = models.CharField(max_length = 255, null = True, blank = True)
+    body_text = models.TextField(null = True, blank = True)
+    pub_date = models.DateField(null = True, blank = True)
+    mod_date = models.DateField(null = True, blank = True)
     authors = models.ManyToManyField(Author)
-    n_comments = models.IntegerField()
-    n_pingbacks = models.IntegerField()
-    rating = models.IntegerField()
+    n_comments = models.IntegerField(null = True, blank = True)
+    n_pingbacks = models.IntegerField(null = True, blank = True)
+    rating = models.IntegerField(null = True, blank = True)
 
     def __str__(self):
         return self.headline
